@@ -8,6 +8,7 @@ import time
 import keyboard
 import threading
 import pydirectinput
+import winsound
 from PIL import Image, ImageTk
 from pathlib import Path
 from win11toast import toast
@@ -140,12 +141,12 @@ marcador.place(x=30, y=350)
 
 tuto = tk.Label(
     janela, 
-    text="F7 para ligar, F8 para desligar, ENTER para aplicar a velocidade.", 
+    text="F7 para ligar/desligar, ENTER para aplicar a velocidade.", 
     font=("Arial", 10), 
     bg="#272727", 
     fg="white"
 )
-tuto.place(x=60, y=80)
+tuto.place(x=80, y=80)
 
 
 ###SEILA###
@@ -154,25 +155,34 @@ def ligar():
     if ativo.is_set():
         return
     ativo.set()
+    winsound.MessageBeep()
     threading.Thread(
         target=toast,
         args=("Autoclicker", "Ligado"), 
         kwargs={"tag": "status", 
         "app_id": "Simple Autoclicker",
-        "icon": str(ico_path)}, daemon=True).start()
+        "icon": str(ico_path),
+        "audio": {"silent": "true"}}, daemon=True).start()
 
 
 def desligar():
     if not ativo.is_set():
         return
     ativo.clear()
+    winsound.MessageBeep()
     threading.Thread(
         target=toast, 
         args=("Autoclicker", "Desligado"), 
         kwargs={"tag": "status", 
         "app_id": "Simple Autoclicker", 
-        "icon": str(ico_path)}, daemon=True).start()
+        "icon": str(ico_path),
+        "audio": {"silent": "true"}}, daemon=True).start()
 
+def alternar():
+    if ativo.is_set():
+        desligar()
+    else:
+        ligar()
 
 def clicking():
     while True:
@@ -181,8 +191,7 @@ def clicking():
         time.sleep(velocidade)
 
 
-keyboard.add_hotkey("f7", ligar)
-keyboard.add_hotkey("f8", desligar)
+keyboard.add_hotkey("f7", alternar)
 keyboard.add_hotkey("enter", definir_velocidade)
 
 thread_click = threading.Thread(target=clicking, daemon=True)
