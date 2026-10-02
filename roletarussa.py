@@ -1,5 +1,4 @@
-#acredito que seja auto explicativo sobre oque é este código, não execute de forma alguma no seu computador se você não sabe oque está fazendo (não me responsabilizo a qualquer dano causado).
-#hihihihi
+#😭🙏🥀🥀
 
 import os
 import random
