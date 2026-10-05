@@ -7,7 +7,7 @@ rampa = "  .:+#@"
 img = Image.open("lain.jpg")
 
 colunas, linhas = os.get_terminal_size()
-altura = linhas - 4
+altura = linhas - 2
 largura = int(altura * img.width / img.height * 2)
 margem = " " * ((colunas - largura) // 2)
 
