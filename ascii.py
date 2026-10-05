@@ -4,7 +4,7 @@ from PIL import Image
 
 rampa = "  .:+#@"
 
-img = Image.open("lain.jpg")
+img = Image.open("yourfile.jpg") #troque "yourfile" pelo nome da sua imagem
 
 colunas, linhas = os.get_terminal_size()
 altura = linhas - 2
