@@ -2,7 +2,7 @@ import os
 from PIL import Image
 
 
-rampa = "  .:+#@"
+rampa = "  .:-=+*#%@"
 
 img = Image.open("yourfile.jpg") #troque "yourfile" pelo nome da sua imagem
 
