@@ -6,7 +6,6 @@ from pathlib import Path
 import time
 
 rampa =  "   .~>>>O$%@"
-#rampa = " .:-~;+=*$%@"
 
 def imagem():   
     explorer_path = Path(__file__).parent / "explorer.ico"
