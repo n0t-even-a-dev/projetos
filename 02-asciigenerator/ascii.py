@@ -13,7 +13,11 @@ def imagem():
     janela = tk.Tk()
     janela.withdraw()
     janela.attributes("-topmost", True)
-    janela.iconbitmap(explorer_path)
+    
+    try:
+        janela.iconbitmap(explorer_path)
+    except:
+        pass
 
     caminho = filedialog.askopenfilename(
         title="Escolha uma imagem",
@@ -60,4 +64,5 @@ try:
         input("Pressione Enter para escolher outra imagem ou Ctrl+C para sair...")
 
 except KeyboardInterrupt:
+    os.system("cls" if os.name == "nt" else "clear")
     exit()
